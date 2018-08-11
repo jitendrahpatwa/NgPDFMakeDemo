@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+// home service
+import { HomeService } from './services/home.service';
+
 // pdfmake instances
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -7,13 +11,16 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [ HomeService ]
 })
 export class HomeComponent implements OnInit {
 
   docDefinition: any;
 
-  constructor() { }
+  constructor(
+  	public homeserv: HomeService
+  ) { }
 
   ngOnInit() {
   	this.initDoc();
@@ -33,6 +40,18 @@ export class HomeComponent implements OnInit {
 
   open() {
     pdfMake.createPdf(this.docDefinition).open();
+  }
+
+  print() {
+    pdfMake.createPdf(this.docDefinition).print();
+  }
+
+  downloadDemo() {
+  	this.homeserv.makepdfSimple();
+  }
+
+  downloadTable() {
+  	this.homeserv.fortable();
   }
 
 }

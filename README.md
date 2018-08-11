@@ -6,6 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## pre-command for node modules installation
+>npm install --save
+
 ## pdfmake installation
 From pdfmake [github source](https://github.com/bpampuch/pdfmake) install pdfmake using following command
 >npm i --save pdfmake
